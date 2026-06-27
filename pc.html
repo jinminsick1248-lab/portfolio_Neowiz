@@ -1,0 +1,1768 @@
+<!DOCTYPE html>
+<html lang="ko" style="background:#F0F2F5;">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>민식 — 팬덤 마케팅 PM | Neowiz 포트폴리오</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Space+Grotesk:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --blue:    #005FFF;
+    --cyan:    #00C8FF;
+    --green:   #00D68F;
+    --amber:   #FFB300;
+    --coral:   #FF5A5F;
+    --purple:  #7C4DFF;
+    --ink:     #0D0F14;
+    --ink2:    #1E2330;
+    --muted:   #6B7280;
+    --border:  #E5E8EF;
+    --bg:      #FFFFFF;
+    --bg2:     #F7F8FC;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+    min-width: 1280px;
+    max-width: 1600px;
+    margin: 0 auto;
+    overflow-x: auto;
+    box-shadow: 0 0 60px rgba(0,0,0,0.06);
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px; height: 60px;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 15px; font-weight: 700; letter-spacing: 0.04em;
+    color: var(--ink);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .nav-logo span {
+    width: 8px; height: 8px; border-radius: 50%; background: var(--blue);
+    display: inline-block;
+  }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a {
+    font-size: 13px; color: var(--muted); text-decoration: none;
+    font-weight: 500; letter-spacing: 0.02em; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--blue); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 60px;
+    overflow: hidden;
+  }
+  .hero-left {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 80px 56px 80px 80px;
+  }
+  .hero-eyebrow {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.16em;
+    color: var(--blue); text-transform: uppercase;
+    margin-bottom: 20px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .hero-eyebrow::before {
+    content: ''; display: block;
+    width: 28px; height: 1.5px; background: var(--blue);
+  }
+  .hero-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 72px; font-weight: 700; line-height: 1.0;
+    letter-spacing: -0.03em; color: var(--ink);
+    margin-bottom: 8px;
+  }
+  .hero-name-ko {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 28px; font-weight: 300; color: var(--muted);
+    margin-bottom: 32px; letter-spacing: 0.06em;
+  }
+  .hero-title {
+    font-size: 20px; font-weight: 500; color: var(--ink2);
+    margin-bottom: 16px; line-height: 1.4;
+  }
+  .hero-title strong { color: var(--blue); }
+  .hero-desc {
+    font-size: 15px; color: var(--muted); line-height: 1.8;
+    max-width: 460px; margin-bottom: 40px;
+  }
+  .hero-tags {
+    display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 40px;
+  }
+  .tag {
+    font-size: 12px; font-weight: 500; padding: 5px 12px;
+    border-radius: 100px; border: 1.5px solid;
+  }
+  .tag-blue  { border-color: var(--blue);   color: var(--blue); }
+  .tag-cyan  { border-color: var(--cyan);   color: #007BA0; }
+  .tag-green { border-color: var(--green);  color: #00875A; }
+  .tag-amber { border-color: var(--amber);  color: #8B6200; }
+  .tag-purple{ border-color: var(--purple); color: var(--purple); }
+
+  .hero-cta {
+    display: flex; gap: 12px;
+  }
+  .btn-primary {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 13px; font-weight: 600; letter-spacing: 0.04em;
+    padding: 12px 28px; border-radius: 8px;
+    background: var(--blue); color: #fff;
+    border: none; cursor: pointer; text-decoration: none;
+    transition: opacity 0.2s, transform 0.15s;
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+  .btn-outline {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 13px; font-weight: 600; letter-spacing: 0.04em;
+    padding: 12px 28px; border-radius: 8px;
+    background: transparent; color: var(--ink);
+    border: 1.5px solid var(--border); cursor: pointer; text-decoration: none;
+    transition: border-color 0.2s, transform 0.15s;
+  }
+  .btn-outline:hover { border-color: var(--ink2); transform: translateY(-1px); }
+
+  .hero-right {
+    background: #13161F;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 80px 80px 80px 56px;
+    position: relative; overflow: hidden;
+  }
+  .hero-right::before {
+    content: ''; position: absolute;
+    top: -120px; right: -80px;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,95,255,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  /* stat-group: 4칸 가로 + 게임카드 아래 */
+  .hero-stat-group {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .hero-stat-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+  .hero-stat {
+    background: #1E2330;
+    border: 0.5px solid rgba(255,255,255,0.10);
+    border-radius: 14px;
+    padding: 16px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: border-color 0.2s, transform 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-stat:hover { transform: translateY(-2px); }
+  /* 상단 컬러 라인 */
+  .hero-stat.blue  { border-top: 2px solid #005FFF; }
+  .hero-stat.red   { border-top: 2px solid #FF4444; }
+  .hero-stat.green { border-top: 2px solid #00D68F; }
+  .hero-stat.amber { border-top: 2px solid #FFB300; }
+  .hero-stat-icon {
+    width: 36px; height: 36px; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; flex-shrink: 0;
+  }
+  .hero-stat.blue  .hero-stat-icon { background: rgba(0,95,255,0.20); }
+  .hero-stat.red   .hero-stat-icon { background: rgba(255,68,68,0.18); }
+  .hero-stat.green .hero-stat-icon { background: rgba(0,214,143,0.18); }
+  .hero-stat.amber .hero-stat-icon { background: rgba(255,179,0,0.18); }
+  .hero-stat-body {}
+  .hero-stat-num {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 22px; font-weight: 700; color: #fff;
+    letter-spacing: -0.02em; line-height: 1.1;
+  }
+  .hero-stat-label {
+    font-size: 11px; color: rgba(255,255,255,0.48); margin-top: 2px; line-height: 1.5;
+  }
+
+  /* ── SECTION COMMON ── */
+  section { padding: 96px 80px; }
+  .section-eyebrow {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.16em;
+    text-transform: uppercase; margin-bottom: 12px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-eyebrow::before {
+    content: ''; display: block;
+    width: 20px; height: 1.5px;
+  }
+  .section-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 40px; font-weight: 700; letter-spacing: -0.02em;
+    color: var(--ink); line-height: 1.15; margin-bottom: 16px;
+  }
+  .section-sub {
+    font-size: 16px; color: var(--muted); max-width: 560px; line-height: 1.8;
+    margin-bottom: 56px;
+  }
+  .divider {
+    border: none; border-top: 1px solid var(--border); margin: 0;
+  }
+
+  /* ── CHINESE ── */
+  #chinese { background: var(--ink); color: #fff; overflow: hidden; position: relative; }
+  #chinese::after {
+    content: '中文'; position: absolute;
+    right: -20px; bottom: -60px;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 220px; font-weight: 700;
+    color: rgba(255,255,255,0.03); line-height: 1;
+    pointer-events: none; user-select: none;
+  }
+
+  #chinese .section-eyebrow { color: var(--cyan); }
+  #chinese .section-eyebrow::before { background: var(--cyan); }
+  #chinese .section-title { color: #fff; }
+  #chinese .section-sub { color: rgba(255,255,255,0.55); }
+
+  .chinese-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: stretch;
+  }
+  .chinese-quote-block {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 20px;
+    padding: 40px;
+    position: relative;
+  }
+  .chinese-quote-mark {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 64px; font-weight: 700; line-height: 1;
+    color: var(--cyan); margin-bottom: 16px; display: block;
+  }
+  .chinese-quote {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 22px; font-weight: 400; line-height: 1.7;
+    color: rgba(255,255,255,0.9); margin-bottom: 16px;
+  }
+  .chinese-quote-sub {
+    font-size: 13px; color: rgba(255,255,255,0.4);
+  }
+  .chinese-certs {
+    display: flex; flex-direction: column; gap: 16px;
+  }
+  .cert-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px; padding: 20px 24px;
+    display: flex; align-items: center; gap: 18px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .cert-card:hover {
+    border-color: rgba(0,200,255,0.4);
+    background: rgba(0,200,255,0.06);
+  }
+  .cert-icon {
+    width: 44px; height: 44px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; flex-shrink: 0;
+  }
+  .cert-icon.cyan   { background: rgba(0,200,255,0.15); }
+  .cert-icon.green  { background: rgba(0,214,143,0.15); }
+  .cert-icon.amber  { background: rgba(255,179,0,0.15); }
+  .cert-icon.purple { background: rgba(124,77,255,0.15); }
+  .cert-body {}
+  .cert-title {
+    font-size: 14px; font-weight: 500; color: #fff; margin-bottom: 3px;
+  }
+  .cert-detail {
+    font-size: 12px; color: rgba(255,255,255,0.45);
+  }
+  .cert-badge {
+    margin-left: auto; flex-shrink: 0;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.06em;
+    padding: 4px 10px; border-radius: 100px;
+  }
+  .cert-badge.cyan   { background: rgba(0,200,255,0.15); color: var(--cyan); }
+  .cert-badge.green  { background: rgba(0,214,143,0.15); color: var(--green); }
+  .cert-badge.amber  { background: rgba(255,179,0,0.15); color: var(--amber); }
+  .cert-badge.purple { background: rgba(124,77,255,0.15); color: #B39DDB; }
+
+  /* ── WHY GAME ── */
+  #why { background: var(--bg2); }
+  #why .section-eyebrow { color: var(--purple); }
+  #why .section-eyebrow::before { background: var(--purple); }
+
+  .why-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    align-items: center;
+  }
+  .why-timeline { display: flex; flex-direction: column; gap: 0; }
+  .why-step {
+    display: flex; gap: 24px;
+    position: relative;
+  }
+  .why-step:not(:last-child)::after {
+    content: ''; position: absolute;
+    left: 19px; top: 48px; bottom: -24px;
+    width: 1.5px; background: var(--border);
+  }
+  .why-dot {
+    flex-shrink: 0;
+    width: 40px; height: 40px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+    position: relative; z-index: 1;
+    border: 2px solid var(--border);
+    background: #fff;
+  }
+  .why-dot.active { border-color: var(--purple); background: rgba(124,77,255,0.08); }
+  .why-body { padding-bottom: 32px; }
+  .why-year {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
+    color: var(--muted); text-transform: uppercase; margin-bottom: 6px;
+  }
+  .why-body h4 {
+    font-size: 16px; font-weight: 700; color: var(--ink); margin-bottom: 8px;
+  }
+  .why-body p {
+    font-size: 14px; color: var(--muted); line-height: 1.75;
+  }
+  .why-body p strong { color: var(--purple); font-weight: 500; }
+
+  .why-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 24px; padding: 40px;
+    position: relative; overflow: hidden;
+  }
+  .why-card::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; right: 0; height: 4px;
+    background: linear-gradient(90deg, var(--purple), var(--blue));
+  }
+  .why-card-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 22px; font-weight: 700; color: var(--ink);
+    margin-bottom: 20px; line-height: 1.3;
+  }
+  .why-card-title span { color: var(--purple); }
+  .why-card p {
+    font-size: 15px; color: var(--muted); line-height: 1.85; margin-bottom: 20px;
+  }
+  .why-card p strong { color: var(--ink); font-weight: 500; }
+  .why-keywords {
+    display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px;
+  }
+  .kw {
+    font-size: 12px; font-weight: 500;
+    padding: 5px 12px; border-radius: 100px;
+  }
+  .kw-blue   { background: rgba(0,95,255,0.08);  color: var(--blue); }
+  .kw-purple { background: rgba(124,77,255,0.08); color: var(--purple); }
+  .kw-coral  { background: rgba(255,90,95,0.08);  color: var(--coral); }
+
+  /* ── PROJECTS ── */
+  #projects {}
+  #projects .section-eyebrow { color: var(--blue); }
+  #projects .section-eyebrow::before { background: var(--blue); }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .project-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: transform 0.25s, box-shadow 0.25s;
+    cursor: default;
+  }
+  .project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.08);
+  }
+  .project-card.featured {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .project-card-banner {
+    height: 180px;
+    display: flex; align-items: flex-end;
+    padding: 20px 24px;
+    position: relative; overflow: hidden;
+  }
+  .project-card.featured .project-card-banner {
+    height: auto; min-height: 100%;
+  }
+  .project-card-banner::after {
+    content: ''; position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 30%, rgba(0,0,0,0.55) 100%);
+  }
+  .banner-bg-blue   { background: linear-gradient(135deg, #0034A8 0%, #0055E0 50%, #0099FF 100%); }
+  .banner-bg-cyan   { background: linear-gradient(135deg, #003A52 0%, #005C7A 50%, #00A8CC 100%); }
+  .banner-bg-green  { background: linear-gradient(135deg, #003D26 0%, #006644 50%, #00B877 100%); }
+  .banner-bg-purple { background: linear-gradient(135deg, #2D0A78 0%, #4A1FAF 50%, #7C4DFF 100%); }
+  .banner-bg-amber  { background: linear-gradient(135deg, #5C3A00 0%, #9A6200 50%, #FFB300 100%); }
+  .banner-emoji {
+    font-size: 52px; position: absolute;
+    top: 50%; left: 50%; transform: translate(-50%, -50%);
+    opacity: 0.3; pointer-events: none;
+    filter: grayscale(0.3);
+  }
+  .project-card.featured .banner-emoji { font-size: 80px; }
+  .project-card-tag {
+    position: relative; z-index: 1;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.10em;
+    text-transform: uppercase; color: rgba(255,255,255,0.9);
+    background: rgba(255,255,255,0.15); backdrop-filter: blur(4px);
+    padding: 4px 10px; border-radius: 100px;
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+  .project-card-body { padding: 24px; }
+  .project-card.featured .project-card-body {
+    padding: 40px; display: flex; flex-direction: column; justify-content: center;
+  }
+  .project-card-title {
+    font-size: 17px; font-weight: 700; color: var(--ink);
+    margin-bottom: 8px; line-height: 1.3;
+  }
+  .project-card.featured .project-card-title { font-size: 22px; margin-bottom: 12px; }
+  .project-card-desc {
+    font-size: 13px; color: var(--muted); line-height: 1.75; margin-bottom: 16px;
+  }
+  .project-card.featured .project-card-desc { font-size: 14px; margin-bottom: 20px; }
+  .project-metrics {
+    display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;
+  }
+  .metric-chip {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 12px; font-weight: 600;
+    padding: 4px 10px; border-radius: 6px;
+  }
+  .mc-blue   { background: rgba(0,95,255,0.08);  color: var(--blue); }
+  .mc-cyan   { background: rgba(0,200,255,0.10); color: #007BA0; }
+  .mc-green  { background: rgba(0,214,143,0.10); color: #00875A; }
+  .mc-amber  { background: rgba(255,179,0,0.10); color: #8B6200; }
+  .mc-purple { background: rgba(124,77,255,0.08);color: var(--purple); }
+  .mc-coral  { background: rgba(255,90,95,0.08); color: #CC2F34; }
+
+  .project-skills {
+    display: flex; flex-wrap: wrap; gap: 6px;
+  }
+  .skill-dot {
+    font-size: 11px; color: var(--muted);
+    display: flex; align-items: center; gap: 4px;
+  }
+  .skill-dot::before {
+    content: ''; width: 5px; height: 5px; border-radius: 50%;
+    background: var(--border); display: block;
+  }
+
+  /* ── SKILLS ── */
+  #skills { background: var(--bg2); }
+  #skills .section-eyebrow { color: var(--green); }
+  #skills .section-eyebrow::before { background: var(--green); }
+
+  .skills-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+  }
+  .skill-group {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 16px; padding: 28px;
+  }
+  .skill-group-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 12px; font-weight: 600; letter-spacing: 0.10em;
+    text-transform: uppercase; margin-bottom: 20px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .skill-group-title .dot {
+    width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+  }
+  .skill-item {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 14px;
+  }
+  .skill-name { font-size: 13px; color: var(--ink); font-weight: 400; }
+  .skill-bar-wrap {
+    flex: 1; margin: 0 12px;
+    height: 4px; background: var(--border); border-radius: 100px; overflow: hidden;
+  }
+  .skill-bar { height: 100%; border-radius: 100px; }
+  .skill-level { font-size: 11px; color: var(--muted); font-weight: 500; min-width: 28px; text-align: right; }
+
+  /* ── CONTACT ── */
+  #contact {
+    background: var(--ink);
+    text-align: center; color: #fff;
+  }
+  #contact .section-eyebrow { justify-content: center; color: var(--amber); }
+  #contact .section-eyebrow::before { background: var(--amber); }
+  #contact .section-title { color: #fff; }
+  .contact-title-accent { color: var(--blue); }
+  .contact-cards {
+    display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;
+    margin-top: 48px;
+  }
+  .contact-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 16px; padding: 24px 32px;
+    text-align: center; min-width: 160px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .contact-card:hover {
+    border-color: rgba(0,95,255,0.5);
+    background: rgba(0,95,255,0.08);
+  }
+  .contact-card-icon { font-size: 28px; margin-bottom: 10px; }
+  .contact-card-label { font-size: 11px; color: rgba(255,255,255,0.4); margin-bottom: 4px; font-family: 'Space Grotesk', sans-serif; letter-spacing: 0.08em; text-transform: uppercase; }
+  .contact-card-val { font-size: 14px; color: #fff; font-weight: 500; }
+
+  /* ── SCROLL ANIMATIONS ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal-delay-1 { transition-delay: 0.10s; }
+  .reveal-delay-2 { transition-delay: 0.20s; }
+  .reveal-delay-3 { transition-delay: 0.30s; }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center; padding: 28px;
+    font-size: 12px; color: rgba(255,255,255,0.25);
+    background: var(--ink); border-top: 1px solid rgba(255,255,255,0.06);
+  }
+
+  /* ── GAME CARD ── */
+  .hero-game-card {
+    background: linear-gradient(135deg, #181c2e 0%, #1e2540 60%, #162040 100%);
+    border: 1px solid rgba(0, 95, 255, 0.25);
+    border-radius: 20px;
+    padding: 28px;
+    margin-top: 4px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-game-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--blue), var(--cyan), var(--purple));
+  }
+  .hero-game-card::after {
+    content: 'GAME';
+    position: absolute;
+    bottom: -16px; right: -8px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 72px; font-weight: 700;
+    color: rgba(255,255,255,0.03);
+    letter-spacing: -0.04em;
+    pointer-events: none;
+    line-height: 1;
+  }
+  .game-card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    gap: 12px;
+  }
+  .game-card-num {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 34px; font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+  .game-card-num span {
+    font-size: 16px; color: var(--cyan);
+    font-weight: 500; margin-left: 2px;
+  }
+  .game-card-sublabel {
+    font-size: 11px; color: rgba(255,255,255,0.45);
+    margin-top: 4px;
+    line-height: 1.5;
+  }
+  .game-card-platforms {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+  .platform-badge {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 9px; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 3px 8px; border-radius: 100px;
+    border: 1px solid;
+    white-space: nowrap;
+  }
+  .pb-gb   { color: #A8D8A8; border-color: rgba(168,216,168,0.35); background: rgba(168,216,168,0.08); }
+  .pb-pc   { color: var(--cyan); border-color: rgba(0,200,255,0.35); background: rgba(0,200,255,0.08); }
+  .pb-ps4  { color: #A78BFA; border-color: rgba(167,139,250,0.35); background: rgba(167,139,250,0.08); }
+  .pb-ns   { color: #FCA5A5; border-color: rgba(252,165,165,0.35); background: rgba(252,165,165,0.08); }
+
+  /* 플랫폼 섹션 */
+  .game-platform-section {
+    margin-bottom: 14px;
+  }
+  .game-platform-section:last-child {
+    margin-bottom: 0;
+  }
+  .game-platform-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+  .game-platform-label span {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 9px; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+  }
+  .game-platform-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(255,255,255,0.07);
+  }
+  .game-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .game-tag {
+    font-size: 11px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.70);
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 6px;
+    padding: 4px 10px;
+    white-space: nowrap;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+    cursor: default;
+  }
+  .game-tag:hover {
+    background: rgba(0,95,255,0.18);
+    border-color: rgba(0,95,255,0.45);
+    color: #fff;
+  }
+  /* 네오위즈 게임 강조 */
+  .game-tag.neowiz {
+    color: var(--cyan);
+    background: rgba(0,200,255,0.10);
+    border-color: rgba(0,200,255,0.35);
+    font-weight: 500;
+  }
+  .game-tag.neowiz::before {
+    content: '★ ';
+    font-size: 9px;
+    opacity: 0.8;
+  }
+
+
+  /* ── photo banner ── */
+  .project-card-banner--photo {
+    position: relative;
+  }
+  .project-card-banner--photo::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.10) 0%, rgba(0,0,0,0.58) 100%);
+    z-index: 0;
+  }
+  .project-card-banner--photo .project-card-tag {
+    position: relative;
+    z-index: 1;
+  }
+  .project-card-banner--photo::after { display: none; }
+
+  /* ── link button ── */
+  .banner-link {
+    position: absolute;
+    top: 12px; right: 12px;
+    z-index: 2;
+    display: flex; align-items: center; justify-content: center;
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.18);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255,255,255,0.35);
+    color: #fff;
+    font-size: 15px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+    line-height: 1;
+  }
+  .banner-link:hover {
+    background: rgba(255,255,255,0.38);
+    transform: scale(1.10);
+  }
+
+
+  /* tall-card */
+  .project-card.tall-card {
+    grid-column: 2;
+    grid-row: span 2;
+    display: flex;
+    flex-direction: column;
+  }
+  .project-card.tall-card .project-card-banner--photo {
+    flex: 1;
+    min-height: 0;
+  }
+  .project-card.tall-card .project-card-body {
+    flex-shrink: 0;
+  }
+
+
+  /* ── PROCESS INFOGRAPHIC ── */
+  .process-wrap {
+    margin-bottom: 52px;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 36px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .process-wrap::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--blue), var(--cyan), var(--purple), var(--green), var(--amber));
+  }
+  .process-eyebrow {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 10px; font-weight: 600;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 28px;
+  }
+  .process-track {
+    display: flex;
+    align-items: flex-start;
+    gap: 0;
+  }
+  .process-step {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    min-width: 0;
+  }
+  .process-icon-box {
+    width: 48px; height: 48px;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 12px;
+    flex-shrink: 0;
+  }
+  .ps-blue   { background: rgba(0,95,255,0.10);  color: var(--blue); }
+  .ps-cyan   { background: rgba(0,200,255,0.10); color: #007BA0; }
+  .ps-purple { background: rgba(124,77,255,0.10);color: var(--purple); }
+  .ps-green  { background: rgba(0,214,143,0.10); color: #00875A; }
+  .ps-amber  { background: rgba(255,179,0,0.12); color: #8B6200; }
+  .process-content { padding: 0 8px; }
+  .process-num {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.10em;
+    color: var(--muted); margin-bottom: 5px;
+  }
+  .process-title {
+    font-size: 13px; font-weight: 700;
+    color: var(--ink); margin-bottom: 8px;
+    line-height: 1.35; word-break: keep-all;
+  }
+  .process-desc {
+    font-size: 11px; color: var(--muted);
+    line-height: 1.75; word-break: keep-all;
+  }
+  .process-desc em {
+    font-style: normal;
+    color: var(--blue);
+    opacity: 0.85;
+  }
+  .process-arrow {
+    flex-shrink: 0;
+    font-size: 18px;
+    color: var(--border);
+    padding: 0 4px;
+    margin-top: 14px;
+    line-height: 48px;
+  }
+
+
+  .process-method {
+    font-size: 11px; color: var(--muted);
+    line-height: 1.7; word-break: keep-all;
+    margin-bottom: 6px;
+  }
+  .process-divider-arrow {
+    font-size: 11px; color: var(--border);
+    margin-bottom: 6px; display: block;
+    line-height: 1;
+  }
+  .process-case {
+    font-size: 11px; color: var(--blue);
+    line-height: 1.7; word-break: keep-all;
+    opacity: 0.9;
+  }
+
+
+  /* ── 기여도 게이지 뱃지 ── */
+  .contrib-gauge {
+    position: absolute;
+    top: 12px; left: 12px;
+    z-index: 2;
+    background: rgba(0,0,0,0.35);
+    backdrop-filter: blur(6px);
+    border-radius: 50%;
+    width: 38px; height: 38px;
+    display: flex; align-items: center; justify-content: center;
+    border: 1px solid rgba(255,255,255,0.15);
+  }
+
+
+  /* ── PROJECT INFOGRAPHIC ── */
+  .proj-info {
+    margin-top: 20px;
+    border-top: 0.5px solid var(--border);
+    padding-top: 16px;
+  }
+  .proj-info-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  .proj-info-row:last-child { margin-bottom: 0; }
+  .proj-info-icon {
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    font-size: 12px;
+  }
+  .pii-why    { background: rgba(0,95,255,0.12); color: #005FFF; }
+  .pii-goal   { background: rgba(124,77,255,0.12); color: #7C4DFF; }
+  .pii-role   { background: rgba(0,214,143,0.12); color: #00875A; }
+  .pii-result { background: rgba(255,179,0,0.14); color: #8B6200; }
+  .proj-info-line {
+    width: 1.5px; background: var(--border);
+    margin: 2px 0 2px 12px;
+    flex-shrink: 0;
+    height: 8px;
+  }
+  .proj-info-content { flex: 1; min-width: 0; }
+  .proj-info-label {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 9px; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+  .pil-why    { color: #005FFF; }
+  .pil-goal   { color: #7C4DFF; }
+  .pil-role   { color: #00875A; }
+  .pil-result { color: #8B6200; }
+  .proj-info-text {
+    font-size: 11.5px; color: var(--muted);
+    line-height: 1.65; word-break: keep-all;
+  }
+  .proj-info-text strong { color: var(--ink); font-weight: 500; }
+
+
+  /* ── 기여도 게이지 위치 수정 ── */
+  .contrib-gauge {
+    position: absolute;
+    top: 12px; left: 12px;
+    z-index: 3;
+    background: rgba(0,0,0,0.40);
+    backdrop-filter: blur(6px);
+    border-radius: 50%;
+    width: 38px; height: 38px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  /* ── 범례 바 ── */
+  .card-legend {
+    display: flex; align-items: center; gap: 16px;
+    font-size: 10px; color: var(--muted);
+    margin-bottom: 14px;
+    font-family: 'Space Grotesk', sans-serif;
+    letter-spacing: 0.04em;
+  }
+  .card-legend-item {
+    display: flex; align-items: center; gap: 5px;
+  }
+  .legend-gauge-demo {
+    width: 14px; height: 14px; border-radius: 50%;
+    border: 2px solid currentColor; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .legend-arrow-demo {
+    width: 20px; height: 20px; border-radius: 50%;
+    background: rgba(0,0,0,0.12); border: 1px solid rgba(0,0,0,0.15);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px; color: var(--muted);
+  }
+  /* ── Result 강조 ── */
+  .proj-info-row.result-row .proj-info-text {
+    font-size: 12.5px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .proj-info-row.result-row .proj-info-icon {
+    width: 30px; height: 30px;
+  }
+  .proj-info-row.result-row {
+    background: var(--bg2);
+    border-radius: 10px;
+    padding: 10px 12px;
+    margin-top: 4px;
+  }
+
+
+  /* ── 타이거즈 카드 이미지 높이 조정 ── */
+  #tigers-card .project-card-banner--photo {
+    background-position: center 15% !important;
+  }
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo"><span></span>Minsick · PORTFOLIO</div>
+  <ul class="nav-links">
+    <li><a href="#chinese">중국어</a></li>
+    <li><a href="#why">커리어 전환</a></li>
+    <li><a href="#projects">프로젝트</a></li>
+    <li><a href="#skills">스킬</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Fandom Marketing PM · Portfolio 2026</div>
+    <div class="hero-name">진민식</div>
+    <div class="hero-name-ko">陈民植</div>
+    <div class="hero-title">
+      게임과 팬덤에 진심인,<br>
+      <strong>중화권을 새로 여는 PM</strong>
+    </div>
+    <p class="hero-desc">
+      중국 심양에서 13년을 살며 쌓은 현지 감각과, 기아에서 리딩한 게임·e스포츠 팬덤 마케팅 경험을 바탕으로 — <strong>앞으로는 제 마음을 움직였던 게임을 만드는 네오위즈에 기여</strong>하겠습니다.
+    </p>
+    <div class="hero-tags">
+      <span class="tag tag-blue">팬덤 마케팅</span>
+      <span class="tag tag-cyan">오프라인 팝업 기획</span>
+      <span class="tag tag-green">굿즈 개발</span>
+      <span class="tag tag-amber">차종 런칭 캠페인 PM</span>
+      <span class="tag tag-purple">SNS 이벤트 운영</span>
+    </div>
+    <div class="hero-cta">
+      <a href="#projects" class="btn-primary">프로젝트 보기 →</a>
+      <a href="#contact" class="btn-outline">연락하기</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-stat-group">
+      <div class="hero-stat-row">
+        <div class="hero-stat blue reveal">
+          <div class="hero-stat-icon">🎮</div>
+          <div class="hero-stat-body">
+            <div class="hero-stat-num">4년차</div>
+            <div class="hero-stat-label">e스포츠·게임<br>팬덤 마케팅</div>
+          </div>
+        </div>
+        <div class="hero-stat red reveal reveal-delay-1">
+          <div class="hero-stat-icon" style="padding:0;overflow:hidden;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 20" width="24" height="16" style="border-radius:3px;display:block;flex-shrink:0;"><rect width="30" height="20" fill="#DE2910"/><polygon points="5,2 5.9,4.8 8.8,4.8 6.5,6.4 7.4,9.2 5,7.6 2.6,9.2 3.5,6.4 1.2,4.8 4.1,4.8" fill="#FFDE00"/><polygon points="10,1 10.4,2.2 11.6,2.2 10.6,2.9 11,4.1 10,3.4 9,4.1 9.4,2.9 8.4,2.2 9.6,2.2" fill="#FFDE00"/><polygon points="12,3.5 12.4,4.7 13.6,4.7 12.6,5.4 13,6.6 12,5.9 11,6.6 11.4,5.4 10.4,4.7 11.6,4.7" fill="#FFDE00"/><polygon points="12,6.5 12.4,7.7 13.6,7.7 12.6,8.4 13,9.6 12,8.9 11,9.6 11.4,8.4 10.4,7.7 11.6,7.7" fill="#FFDE00"/><polygon points="10,9 10.4,10.2 11.6,10.2 10.6,10.9 11,12.1 10,11.4 9,12.1 9.4,10.9 8.4,10.2 9.6,10.2" fill="#FFDE00"/></svg></div>
+          <div class="hero-stat-body">
+            <div class="hero-stat-num">13년</div>
+            <div class="hero-stat-label">중국 심양 현지 출생·거주/현지 학교 과정 수료</div>
+          </div>
+        </div>
+        <div class="hero-stat green reveal reveal-delay-2">
+          <div class="hero-stat-icon">🏆</div>
+          <div class="hero-stat-body">
+            <div class="hero-stat-num">HSK 6급</div>
+            <div class="hero-stat-label">교육부상 말하기 대회<br>대상/한국외대 중언문 전공 졸업</div>
+          </div>
+        </div>
+        <div class="hero-stat amber reveal reveal-delay-3">
+          <div class="hero-stat-icon">🎉</div>
+          <div class="hero-stat-body">
+            <div class="hero-stat-num">10건+</div>
+            <div class="hero-stat-label">팝업·굿즈 기획<br>런칭 캠페인 추진</div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-game-card reveal reveal-delay-3">
+        <div class="game-card-header">
+          <div>
+            <div class="game-card-num">60<span>개+</span></div>
+            <div class="game-card-sublabel">GAME BOY부터 PS4까지, 언제나 게임과 함께.</div>
+          </div>
+          <div class="game-card-platforms">
+            <span class="platform-badge pb-gb">🎮 Game Boy/PSP</span>
+            <span class="platform-badge pb-pc">🖥 PC</span>
+            <span class="platform-badge pb-ps4">🎮 PS4/Switch</span>
+            <span class="platform-badge pb-ns">🕹 Switch</span>
+          </div>
+        </div>
+
+        <div class="game-platform-section">
+          <div class="game-platform-label"><span>🎮 Game Boy / PSP · 어린 시절 (중국 심양)</span></div>
+          <div class="game-tags">
+            <span class="game-tag">포켓몬</span>
+            <span class="game-tag">별의 커비</span>
+            <span class="game-tag">파타퐁</span>
+            <span class="game-tag">태고의 달인</span>
+            <span class="game-tag">록맨</span>
+            <span class="game-tag">봄버맨</span>
+            <span class="game-tag">슈퍼 마리오</span>
+            <span class="game-tag">GTA 바이스 시티</span>
+            <span class="game-tag neowiz">디제이 맥스 포터블</span>
+            <span class="game-tag">나루토</span>
+            <span class="game-tag">삐뽀사루 겟츄!</span>
+            <span class="game-tag">심즈 2</span>
+            <span class="game-tag">웜즈</span>
+            <span class="game-tag">위닝</span>
+            <span class="game-tag">유희왕</span>
+          </div>
+        </div>
+
+        <div class="game-platform-section">
+          <div class="game-platform-label"><span>🖥 PC · 한국 귀국 후</span></div>
+          <div class="game-tags">
+            <span class="game-tag">스타 크래프트</span>
+            <span class="game-tag">워크래프트</span>
+            <span class="game-tag">리그 오브 레전드</span>
+            <span class="game-tag">오버워치</span>
+            <span class="game-tag">카운터 스트라이크</span>
+            <span class="game-tag">콜 오브 듀티 2</span>
+            <span class="game-tag">심즈 3·4</span>
+            <span class="game-tag">문명 5</span>
+            <span class="game-tag">포탈 2</span>
+            <span class="game-tag">마인크래프트</span>
+            <span class="game-tag">FIFA 15</span>
+            <span class="game-tag">어쌔신 크리드</span>
+            <span class="game-tag">바이오쇼크 인피니트</span>
+            <span class="game-tag">위쳐 3</span>
+          </div>
+        </div>
+
+        <div class="game-platform-section">
+          <div class="game-platform-label"><span>🎮 PS4 · 성인 이후</span></div>
+          <div class="game-tags">
+            <span class="game-tag neowiz">DJMAX RESPECT V</span>
+            <span class="game-tag neowiz">P의 거짓</span>
+            <span class="game-tag">블러드본</span>
+            <span class="game-tag">갓 오브 워</span>
+            <span class="game-tag">언챠티드 4</span>
+            <span class="game-tag">라스트 오브 어스</span>
+            <span class="game-tag">호라이즌 제로 던</span>
+            <span class="game-tag">데스 스트랜딩</span>
+            <span class="game-tag">디트로이트 비컴 휴먼</span>
+            <span class="game-tag">사이버펑크 2077</span>
+            <span class="game-tag">레드 데드 리뎀션 2</span>
+            <span class="game-tag">GTA5</span>
+            <span class="game-tag">파이널 판타지 15</span>
+            <span class="game-tag">배트맨 아캄 나이트</span>
+            <span class="game-tag">라쳇 앤 클링크</span>
+          </div>
+        </div>
+
+        <div class="game-platform-section">
+          <div class="game-platform-label"><span>🕹 Switch / 인디</span></div>
+          <div class="game-tags">
+            <span class="game-tag">젤다의 전설 1·2</span>
+            <span class="game-tag">슈퍼 마리오 파티</span>
+            <span class="game-tag">레고 스타워즈</span>
+            <span class="game-tag">레고 월드</span>
+            <span class="game-tag">슈퍼 마리오 오디세이</span>
+            <span class="game-tag">슈퍼 마리오 브라더스 원더</span>
+            <span class="game-tag">마리오 카트 8</span>
+            <span class="game-tag">동물의 숲</span>
+            <span class="game-tag">투 더 문</span>
+            <span class="game-tag">언더테일</span>
+            <span class="game-tag">카타나 제로</span>
+            <span class="game-tag">it takes two</span>
+            <span class="game-tag">오버쿡드</span>
+            <span class="game-tag">니어: 오토마타</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<hr class="divider">
+
+<!-- CHINESE SECTION -->
+<section id="chinese">
+  <div class="section-eyebrow" style="color:var(--cyan)">01 · Chinese Competency</div>
+  <h2 class="section-title">중국어는 제 첫 번째 언어였습니다.</h2>
+  <p class="section-sub">심양에서 태어나 13년을 현지에서 살았습니다.<br>언제든 잠깐의 기간만 주어진다면, 다시 중국어로 원활하게 소통할 수 있습니다.</p>
+
+  <div class="chinese-grid">
+    <div class="chinese-quote-block reveal">
+      <span class="chinese-quote-mark">"</span>
+      <p class="chinese-quote">
+        我在沈阳生活了13年，<br>用中文思考，用中文沟通。<br>是真正了解中国的人才。
+      </p>
+      <p class="chinese-quote-sub">심양에서 13년을 거주하며 중국어로 생각하고 말했습니다. 저는 중국을 제 마음으로 이해하고 있습니다.</p>
+    </div>
+    <div class="chinese-certs reveal reveal-delay-1">
+      <div class="cert-card">
+        <div class="cert-icon cyan">🌏</div>
+        <div class="cert-body">
+          <div class="cert-title">중국 심양 출생 · 13년 현지 거주</div>
+          <div class="cert-detail">중등생 수준 Speaking · 현지 문화 내재화</div>
+        </div>
+        <div class="cert-badge cyan">Advanced</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon green">🏅</div>
+        <div class="cert-body">
+          <div class="cert-title">제14회 고등학생 중국어 말하기 대회 1위</div>
+          <div class="cert-detail">중국교육부상 대상 수상 · 2015년</div>
+        </div>
+        <div class="cert-badge green">1위</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon amber">🎓</div>
+        <div class="cert-body">
+          <div class="cert-title">한국외국어대학교 중국언어문화전공</div>
+          <div class="cert-detail">2022년 8월 졸업 · 중국어 커뮤니케이션</div>
+        </div>
+        <div class="cert-badge amber">학사</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon purple">📜</div>
+        <div class="cert-body">
+          <div class="cert-title">HSK 6급 취득</div>
+          <div class="cert-detail">2016년 · 중국어 최고급 공인 자격증</div>
+        </div>
+        <div class="cert-badge purple">6급</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- WHY GAME -->
+<section id="why">
+  <div class="section-eyebrow" style="color:var(--purple)">02 · Career Pivot</div>
+  <h2 class="section-title">왜 게임 팬덤 마케팅인가?</h2>
+  <p class="section-sub">기아에서 e스포츠 팀 Dplus Kia의 팬덤 마케팅을 4년간 추진하며<br>업무의 매력과 보람을 확인해 커리어의 방향성을 확고히 정했습니다.<br><br>앞으로는 언제나 제 마음을 움직였던 '게임을 개발하는 기업',<br>그 중에서도 <strong>높은 퀄리티의 게임을 배출하는 네오위즈에 기여하고자 합니다.</strong></p>
+
+  <div class="why-layout">
+    <div class="why-timeline">
+      <div class="why-step">
+        <div class="why-dot">🚗</div>
+        <div class="why-body">
+          <div class="why-year">2023 — 현재 · 기아 마케팅1팀</div>
+          <h4>차종 마케팅 PM - 프로젝트 리딩 역량 확보</h4>
+          <p>카니발, 스포티지, PV5 런칭을 PM으로 총괄. 판매·상품·교육·CX 등 <strong>다 부문 크로스펑셔널 협업</strong>을 리딩하며 사업계획 목표 대비 200% 이상의 계약을 달성했습니다.</p>
+        </div>
+      </div>
+      <div class="why-step">
+        <div class="why-dot active">🎮</div>
+        <div class="why-body">
+          <div class="why-year">2023 — 현재 · Dplus Kia · PUBGM</div>
+          <h4>e스포츠 팬덤 마케팅 - 콘텐츠/행사 기획력 개발</h4>
+          <p>Dplus Kia 스폰서십과 PUBGM 대규모 콜라보 프로젝트를 맡으며 <strong>팬덤이 만들어내는 브랜드 에너지</strong>를 직접 경험하고 커리어 방향성을 결정했습니다.</p>
+        </div>
+      </div>
+      <div class="why-step">
+        <div class="why-dot active" style="border-color:var(--blue); background:rgba(0,95,255,0.08);">🌏</div>
+        <div class="why-body" style="padding-bottom: 0;">
+          <div class="why-year">Next Step</div>
+          <h4>중화권 팬덤 PM</h4>
+          <p>중국어 + 게임 팬덤 기획 역량 + 콘텐츠 개발·행사 리딩 경험까지, 지금까지 제가 쌓은 커리어를 바탕으로 앞으로 <strong>네오위즈 게임의 중화권 팬덤</strong>을 락인하는 데에 기여하고 싶습니다.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="why-card reveal">
+      <div class="why-card-title">"브랜드와 팬들을 한 세계관 속에서 <br> <span>지속적으로 놀 수 있게 만들 때,</span> <br>팬덤은 성장하기 시작합니다."</div>
+      <p>기아에서 e스포츠/게임 팬덤과 접점을 쌓고 수많은 콘텐츠를 기획하며 배운 것은 — 팬들은 <strong>게임 외적으로도 놀고 몰입할 수 있는 장이 필요하다</strong>는 사실이었습니다.</p>
+      <p>P의 거짓, 산나비, 스컬처럼 강렬한 서사를 가진 게임의 팬덤은 더욱 그렇습니다. 다양한 이벤트·콘텐츠·행사는 그 세계관을 현실로 꺼내는 장치이며, 그 장치에 디테일이 추가될 때 팬덤은 더욱 몰입하고 충성도를 높여갈 것입니다. <br><br>저는 앞으로 <strong>그 장치를 기획하고 열정적으로 실행하는 PM</strong>이 되고 싶습니다.</p>
+      <div class="why-keywords">
+        <span class="kw kw-blue">크로스펑셔널 PM</span>
+        <span class="kw kw-purple">팬덤 세계관 기획</span>
+        <span class="kw kw-coral">온·오프라인 연계</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-eyebrow" style="color:var(--blue)">03 · Projects</div>
+  <h2 class="section-title">팬덤 마케팅 프로젝트</h2>
+  <p class="section-sub">e스포츠 스폰서십부터 게임 콜라보까지 — PM으로서 팬덤과 직접 만나는 마케팅을 기획하고 실행했습니다.</p>
+  <!-- PROCESS INFOGRAPHIC -->
+  <div class="process-wrap reveal">
+    <div class="process-eyebrow">MY WORK PROCESS</div>
+    <div class="process-track">
+
+      <div class="process-step">
+        <div class="process-icon-box ps-blue">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+            <path d="M17 8h4M19 6v4"/>
+          </svg>
+        </div>
+        <div class="process-content">
+          <div class="process-num">01</div>
+          <div class="process-title">팬덤 분석</div>
+          <div class="process-desc"><span class="process-method">타겟 팬덤의 관심사·행동 패턴·커뮤니티 니즈를 분석합니다.</span><span class="process-divider-arrow">↓</span><span class="process-case">Dplus Kia 팬파티 기획 전 팬덤 소비 성향과 선호 굿즈 유형을 사전 조사해 기획에 반영했습니다.</span></div>
+        </div>
+      </div>
+
+      <div class="process-arrow">→</div>
+
+      <div class="process-step">
+        <div class="process-icon-box ps-cyan">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>
+          </svg>
+        </div>
+        <div class="process-content">
+          <div class="process-num">02</div>
+          <div class="process-title">현재 브랜드 진단</div>
+          <div class="process-desc"><span class="process-method">브랜드의 팬덤 내 인지도·호감도·접점 현황을 파악합니다.</span><span class="process-divider-arrow">↓</span><span class="process-case">PUBGM × Kia 팝업 기획 시 게임 유저 사이에서의 Kia 브랜드 인지 수준과 공백을 진단했습니다.</span></div>
+        </div>
+      </div>
+
+      <div class="process-arrow">→</div>
+
+      <div class="process-step">
+        <div class="process-icon-box ps-purple">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>
+            <path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/>
+          </svg>
+        </div>
+        <div class="process-content">
+          <div class="process-num">03</div>
+          <div class="process-title">콘텐츠/행사 연간 계획 수립</div>
+          <div class="process-desc"><span class="process-method">팬덤 인사이트와 브랜드 방향성을 결합해 연간 마케팅 로드맵을 설계합니다.</span><span class="process-divider-arrow">↓</span><span class="process-case">Dplus Kia 스폰서십 시즌 단위로 SNS 이벤트·팝업·굿즈 출시 타임라인을 통합 기획했습니다.</span></div>
+        </div>
+      </div>
+
+      <div class="process-arrow">→</div>
+
+      <div class="process-step">
+        <div class="process-icon-box ps-green">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+        </div>
+        <div class="process-content">
+          <div class="process-num">04</div>
+          <div class="process-title">이해관계자 컨택/협업</div>
+          <div class="process-desc"><span class="process-method">파트너사·에이전시·사내 부문을 조율해 실행 기반을 만듭니다.</span><span class="process-divider-arrow">↓</span><span class="process-case">Dplus Kia 팬파티 기획 시 e스포츠 선수단·행사 운영사·차량 전시 부문·사내 마케팅팀 등 다수 이해관계자를 조율해 200명 규모 행사를 추진했습니다.</span></div>
+        </div>
+      </div>
+
+      <div class="process-arrow">→</div>
+
+      <div class="process-step">
+        <div class="process-icon-box ps-amber">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+          </svg>
+        </div>
+        <div class="process-content">
+          <div class="process-num">05</div>
+          <div class="process-title">프로젝트 추진</div>
+          <div class="process-desc"><span class="process-method">계획을 현장에서 실행하고 성과를 데이터로 측정합니다.</span><span class="process-divider-arrow">↓</span><span class="process-case">팬파티 만족도 98점·오가닉 후기 10건↑, 뷰잉파티 만족도 97점 등 정량 성과로 결과를 입증했습니다.</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div style="display:flex;align-items:center;gap:16px;font-size:11px;color:var(--muted);margin:16px 0 20px;font-family:'Space Grotesk',sans-serif;"><span style="display:flex;align-items:center;gap:5px;"><svg width="18" height="18" viewBox="0 0 18 18" style="flex-shrink:0"><circle cx="9" cy="9" r="6.5" fill="none" stroke="rgba(0,0,0,0.12)" stroke-width="2.5"/><circle cx="9" cy="9" r="6.5" fill="none" stroke="#005FFF" stroke-width="2.5" stroke-dasharray="28.0 40.8" stroke-dashoffset="-10.2" stroke-linecap="round"/></svg>&nbsp;이미지 좌상단 원형 게이지 = 기여도</span><span style="display:flex;align-items:center;gap:5px;"><span style="width:20px;height:20px;border-radius:50%;background:rgba(0,0,0,0.08);border:1px solid rgba(0,0,0,0.15);display:inline-flex;align-items:center;justify-content:center;font-size:10px;color:var(--muted);">↗</span>&nbsp;이미지 우상단 버튼 = 관련 링크</span></div>
+  <!-- /PROCESS INFOGRAPHIC -->
+  
+  <div class="projects-grid">
+
+    <!-- Featured: PUBGM Popup -->
+    <div class="project-card featured reveal">
+      <div class="project-card-banner project-card-banner--photo" style="background-image:url('./images/pubgm.png');background-size:cover;background-position:center center;">
+        <a href="https://www.youtube.com/watch?v=-RNhmSdy09w" target="_blank" rel="noopener" class="banner-link" style="right:56px;" title="팝업 영상 보기">↗</a>
+        <a href="https://youtu.be/Pc_J0hsKZsE?si=WxSXETQhVx1KSLx8" target="_blank" rel="noopener" class="banner-link" style="right:12px;" title="캠페인 영상 보기">↗</a>
+        <div class="contrib-gauge"><svg width="38" height="38" viewBox="0 0 38 38" style="display:block;flex-shrink:0;"><circle cx="19" cy="19" r="15" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="3"/><circle cx="19" cy="19" r="15" fill="none" stroke="#005FFF" stroke-width="3" stroke-dasharray="75.3982 94.2478" stroke-dashoffset="-23.5619" stroke-linecap="round"/><text x="19" y="22" text-anchor="middle" font-size="9" font-weight="600" fill="white" font-family="Space Grotesk,sans-serif">80%</text></svg></div>
+        <span class="project-card-tag">오프라인 행사 기획 · 굿즈 개발</span>
+      </div>
+      <div class="project-card-body">
+        <div class="project-card-title">PUBGM X Kia 팝업 PM</div>
+        <p class="project-card-desc">PUBG MOBILE과 기아 파트너십 캠페인으로 오프라인 팝업 행사를 기획·운영했습니다. 게임 팬 타겟 체험존 설계, 현장 운영 프로세스 수립, 굿즈 개발, 에이전시 협업 리딩까지 전 과정을 PM으로 총괄했습니다.</p>
+      
+        <div class="proj-info">
+          <div class="proj-info-row">
+            <div class="proj-info-icon pii-why">💡</div>
+            <div class="proj-info-content">
+              <div class="proj-info-label pil-why">WHY</div>
+              <div class="proj-info-text">Dplus Kia 활동이 LoL 팬덤에 편중 — <strong>3040 구매력 있는 PUBGM 유저</strong>와의 접점 필요 — 크래프톤의 제안에서 기회를 포착 후 인게임/오프라인 콜라보 추진</div>
+            </div>
+          </div>
+          <div class="proj-info-line"></div>
+          <div class="proj-info-row">
+            <div class="proj-info-icon pii-goal">🎯</div>
+            <div class="proj-info-content">
+              <div class="proj-info-label pil-goal">GOAL</div>
+              <div class="proj-info-text"><strong>기아 팝업 역대 최다 일평균 방문객</strong> 달성. 남녀노소 누구나 즐기는 체험형 구성으로 전 연령층 유입 설계.</div>
+            </div>
+          </div>
+          <div class="proj-info-line"></div>
+          <div class="proj-info-row">
+            <div class="proj-info-icon pii-role">🙋</div>
+            <div class="proj-info-content">
+              <div class="proj-info-label pil-role">MY ROLE</div>
+              <div class="proj-info-text">체험존 전체 기획 · 에이전시 리딩 · 크래프톤 파트너십 협업 · 현장 운영 PM 총괄. 게임 아이템용 기아 차량 IP 제공 계약 체결.</div>
+            </div>
+          </div>
+          <div class="proj-info-line"></div>
+          <div class="proj-info-row result-row">
+            <div class="proj-info-icon pii-result">🏆</div>
+            <div class="proj-info-content">
+              <div class="proj-info-label pil-result">RESULT</div>
+              <div class="proj-info-text"><strong>일평균 방문객 497명</strong> — 기아 팝업 역대 최고 기록. 오가닉 기사 227건 · 만족도 94.8점 · IP Fee 1억 수취.</div>
+            </div>
+          </div>
+        </div></div>
+    </div>
+
+    <div class="project-card featured reveal">
+      <div class="project-card-banner project-card-banner--photo" style="background-image:url('./images/hyundai.jpg');background-size:cover;background-position:center center;">
+        <a href="https://v.daum.net/v/3ipTU66F5n" target="_blank" rel="noopener" class="banner-link" style="right:56px;" title="관련 기사 보기">↗</a>
+        <a href="https://youtu.be/NKNkbN_0Nls?si=cjpOw9GcPAMD7Cpx" target="_blank" rel="noopener" class="banner-link" style="right:12px;" title="팝업 영상 보기">↗</a>
+       <div class="contrib-gauge"><svg width="38" height="38" viewBox="0 0 38 38" style="display:block;flex-shrink:0;"><circle cx="19" cy="19" r="15" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="3"/><circle cx="19" cy="19" r="15" fill="none" stroke="#005FFF" stroke-width="3" stroke-dasharray="75.3982 94.2478" stroke-dashoffset="-23.5619" stroke-linecap="round"/><text x="19" y="22" text-anchor="middle" font-size="9" font-weight="600" fill="white" font-family="Space Grotesk,sans-serif">80%</text></svg></div>
+        <span class="project-card-tag">오프라인 행사 기획 · 굿즈 개발 · 팬덤 이벤트</span>
+      </div>
+      <div class="project-card-body" style="display:flex;flex-direction:column;justify-content:center;">
+        <div class="project-card-title">Dplus Kia 더현대 팝업 PM</div>
+        <p class="project-card-desc">Dplus Kia 팬덤 대상 더현대 서울 팝업 컨셉 기획·총괄 및 TCG 카드 굿즈 기획·제작. 팬 인사이트 기반으로 아이템을 디테일하게 개발하고 제작사 협업을 리딩했습니다.</p>
+      
+        <div class="proj-info">
+          <div class="proj-info-row">
+            <div class="proj-info-icon pii-why">💡</div>
+            <div class="proj-info-content">
+              <div class="proj-info-label pil-why">WHY</div>
+              <div class="proj-info-text">Dplus Kia 팬덤과의 접점을 오프라인 공간으로 확장해야 할 시점. 팬덤이 단순 브랜드만 인지하는 것이 아니라 <strong>선수·차량과 직접 만나는 브랜드 경험</strong>을 설계하고자 기획.</div>
+            </div>
+          </div>
+          <div class="proj-info-line"></div>
+          <div class="proj-info-row">
+            <div class="proj-info-icon pii-goal">🎯</div>
+            <div class="proj-info-content">
+              <div class="proj-info-label pil-goal">GOAL</div>
+              <div class="proj-info-text">팬덤이 자발적으로 찾아오는 <strong>팝업 공간을 기획</strong>, 그 안에서 기아 차종을 자연스럽게 경험할 수 있도록 구성. 굿즈는 팬덤의 수집 욕구를 자극해 방문 동기를 강화하는 장치로 활용.</div>
+            </div>
+          </div>
+          <div class="proj-info-line"></div>
+          <div class="proj-info-row">
+            <div class="proj-info-icon pii-role">🙋</div>
+            <div class="proj-info-content">
+              <div class="proj-info-label pil-role">MY ROLE</div>
+              <div class="proj-info-text"><strong>팝업 컨셉 전체 기획</strong> — ㅋㄹㅅㅇㅋ × ㅋㄹㅆㅇㅋ 컨셉(선수명 앞글자 : 킹루쇼에켈 및 차종명 앞글자 : 카레쏘이케) 고안, 공간 동선 설계, 체험 콘텐츠 구성. <strong>TCG 카드 굿즈 기획</strong> — 선수 밈 조사 → 25종 카드 문구·디자인 기획, 레어도 위계 설정으로 수집 욕구 자극.</div>
+            </div>
+          </div>
+          <div class="proj-info-line"></div>
+          <div class="proj-info-row result-row">
+            <div class="proj-info-icon pii-result">🏆</div>
+            <div class="proj-info-content">
+              <div class="proj-info-label pil-result">RESULT</div>
+              <div class="proj-info-text"><strong>TCG 카드 91,000장 판매</strong> · 10일간 방문객 3,800명 · 온라인 오가닉 게시물 200건↑. 영타겟에게 기아 5개 차종 각인 성공.</div>
+            </div>
+          </div>
+        </div></div>
+    </div>
+
+    <div class="project-card featured reveal">
+      <div class="project-card-banner project-card-banner--photo" style="background-image:url('./images/tigers.png');background-size:cover;background-position:center 15%;">
+        <a href="https://youtu.be/jm-RW4XB2Vo?si=7syRRtsw7gbNxbyH" target="_blank" rel="noopener" class="banner-link" style="right:12px;" title="콜라보 영상 보기">↗</a>
+       <div class="contrib-gauge"><svg width="38" height="38" viewBox="0 0 38 38" style="display:block;flex-shrink:0;"><circle cx="19" cy="19" r="15" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="3"/><circle cx="19" cy="19" r="15" fill="none" stroke="#00D68F" stroke-width="3" stroke-dasharray="94.2478 0" stroke-dashoffset="-23.5619" stroke-linecap="round"/><text x="19" y="22" text-anchor="middle" font-size="9" font-weight="600" fill="white" font-family="Space Grotesk,sans-serif">100%</text></svg></div>
+        <span class="project-card-tag">콜라보 굿즈 · 팬덤 마케팅</span>
+      </div>
+      <div class="project-card-body" style="display:flex;flex-direction:column;justify-content:center;">
+        <div class="project-card-title">기아 타이거즈 콜라보 유니폼 기획</div>
+        <p class="project-card-desc">프로야구 기아 타이거즈 및 e스포츠 Dplus Kia 팬덤간의 접점 형성을 위한 콜라보 유니폼/행사를 기획. 스포츠 팬덤의 특성을 분석해 수요 높은 아이템을 선별하고 브랜드 아이덴티티를 녹인 디자인 방향을 수립했습니다.</p>
+      
+        <div class="proj-info">
+          <div class="proj-info-row">
+            <div class="proj-info-icon pii-why">💡</div>
+            <div class="proj-info-content">
+              <div class="proj-info-label pil-why">WHY</div>
+              <div class="proj-info-text">전통 스포츠(야구)와 신규 e스포츠 팬덤 간 <strong>교류가 없던 상황</strong>. 두 팬덤을 연결해 스포츠 팬덤 풀 자체를 확장하고자 직접 제안.</div>
+            </div>
+          </div>
+          <div class="proj-info-line"></div>
+          <div class="proj-info-row">
+            <div class="proj-info-icon pii-goal">🎯</div>
+            <div class="proj-info-content">
+              <div class="proj-info-label pil-goal">GOAL</div>
+              <div class="proj-info-text">콜라보 유니폼을 통해 <strong>야구·e스포츠 양측 팬덤 교류 활성화</strong> 및 기아 브랜드 인지도 자연스럽게 확산.</div>
+            </div>
+          </div>
+          <div class="proj-info-line"></div>
+          <div class="proj-info-row">
+            <div class="proj-info-icon pii-role">🙋</div>
+            <div class="proj-info-content">
+              <div class="proj-info-label pil-role">MY ROLE</div>
+              <div class="proj-info-text">기아 타이거즈와 Dplus Kia 양사에 직접 콜라보 제안. 팬덤 수요 아이템 분석 → 유니폼 디자인 방향 수립 → 제작사 협업 리딩. 양 구단 공식 홈페이지 판매 채널 조율.</div>
+            </div>
+          </div>
+          <div class="proj-info-line"></div>
+          <div class="proj-info-row result-row">
+            <div class="proj-info-icon pii-result">🏆</div>
+            <div class="proj-info-content">
+              <div class="proj-info-label pil-result">RESULT</div>
+              <div class="proj-info-text"><strong>콜라보 유니폼 1분 만에 1,000장 완판</strong> · 선수단 시구/시타 행사 온라인 바이럴 · 콘텐츠 조회수 30만 · 좋아요 2,700개.</div>
+            </div>
+          </div>
+        </div></div>
+    </div>
+
+    <div class="project-card featured reveal">
+      <div class="project-card-banner project-card-banner--photo" style="background-image:url('./images/fanparty.png');background-size:cover;background-position:center 40%;">
+        <a href="https://youtu.be/hteDRcpkTWo?si=Erk8CfRlbQ0fGj4q" target="_blank" rel="noopener" class="banner-link" style="right:12px;" title="팬파티 영상 보기">↗</a>
+       <div class="contrib-gauge"><svg width="38" height="38" viewBox="0 0 38 38" style="display:block;flex-shrink:0;"><circle cx="19" cy="19" r="15" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="3"/><circle cx="19" cy="19" r="15" fill="none" stroke="#005FFF" stroke-width="3" stroke-dasharray="75.3982 94.2478" stroke-dashoffset="-23.5619" stroke-linecap="round"/><text x="19" y="22" text-anchor="middle" font-size="9" font-weight="600" fill="white" font-family="Space Grotesk,sans-serif">80%</text></svg></div>
+        <span class="project-card-tag">오프라인 행사 기획 · 팬덤 이벤트</span>
+      </div>
+      <div class="project-card-body" style="display:flex;flex-direction:column;justify-content:center;">
+        <div class="project-card-title">Dplus Kia 팬파티 PM</div>
+        <p class="project-card-desc">400평 공간에 Dplus Kia 팬덤 200명을 초대한 대형 체험형 팬파티를 기획했습니다. e스포츠 선수단 초청, 현장 체험 요소 기획, 행사 타임라인 및 이벤트 기획 등 PM으로서 행사 계획을 디테일하게 수립해 추진했습니다.</p>
+      
+        <div class="proj-info">
+          <div class="proj-info-row">
+            <div class="proj-info-icon pii-why">💡</div>
+            <div class="proj-info-content">
+              <div class="proj-info-label pil-why">WHY</div>
+              <div class="proj-info-text">단순 팬미팅을 넘어, <strong>EV3와 연계한 체험형 팬파티</strong>로 팬덤에게 기아 차량을 자연스럽게 체험시키고자 직접 기획.</div>
+            </div>
+          </div>
+          <div class="proj-info-line"></div>
+          <div class="proj-info-row">
+            <div class="proj-info-icon pii-goal">🎯</div>
+            <div class="proj-info-content">
+              <div class="proj-info-label pil-goal">GOAL</div>
+              <div class="proj-info-text">초대 팬덤 200명 대상 <strong>만족도 95점 이상</strong> 달성. e스포츠 업계 체험형 팬파티 선례 구축.</div>
+            </div>
+          </div>
+          <div class="proj-info-line"></div>
+          <div class="proj-info-row">
+            <div class="proj-info-icon pii-role">🙋</div>
+            <div class="proj-info-content">
+              <div class="proj-info-label pil-role">MY ROLE</div>
+              <div class="proj-info-text">400평 행사 전체 PM. EV3 RC카 레이싱·타임어택·래핑카 전시·폴라로이드 체험 직접 기획. 킹겐극장 상영회·선수 릴스타임·Q&A 등 행사 타임라인 전체 설계.</div>
+            </div>
+          </div>
+          <div class="proj-info-line"></div>
+          <div class="proj-info-row result-row">
+            <div class="proj-info-icon pii-result">🏆</div>
+            <div class="proj-info-content">
+              <div class="proj-info-label pil-result">RESULT</div>
+              <div class="proj-info-text"><strong>행사 만족도 98점</strong> 달성(목표 95점 초과) · 오가닉 후기 10건↑ · e스포츠 업계 내 상징적인 팬파티 포맷 선례 구축.</div>
+            </div>
+          </div>
+        </div></div>
+    </div>
+
+    <div class="project-card featured reveal">
+      <div class="project-card-banner project-card-banner--photo" style="background-image:url('./images/viewing.png');background-size:cover;background-position:center center;">
+        <a href="https://youtu.be/TG_inHJIajs?si=lZt6C1fepORNSIoI" target="_blank" rel="noopener" class="banner-link" style="right:12px;" title="뷰잉파티 영상 보기">↗</a>
+       <div class="contrib-gauge"><svg width="38" height="38" viewBox="0 0 38 38" style="display:block;flex-shrink:0;"><circle cx="19" cy="19" r="15" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="3"/><circle cx="19" cy="19" r="15" fill="none" stroke="#005FFF" stroke-width="3" stroke-dasharray="75.3982 94.2478" stroke-dashoffset="-23.5619" stroke-linecap="round"/><text x="19" y="22" text-anchor="middle" font-size="9" font-weight="600" fill="white" font-family="Space Grotesk,sans-serif">80%</text></svg></div>
+        <span class="project-card-tag">오프라인 행사 기획 · 차량 연계</span>
+      </div>
+      <div class="project-card-body">
+        <div class="project-card-title">PV5 × Dplus Kia 팬 뷰잉파티 PM</div>
+        <p class="project-card-desc">기아 언플러그드 그라운드 공간에 Dplus Kia 팬덤 150명을 초대한 체험형 뷰잉파티를 기획했습니다. 런칭한 PV5의 다양한 활용성을 영타겟에게 효과적으로 알리기 위해 PV5 게이밍카를 특별 제작해 경기 시작 전 1대1 이벤트 매치로 차량을 체험하도록 했습니다.</p>
+      
+        <div class="proj-info">
+          <div class="proj-info-row">
+            <div class="proj-info-icon pii-why">💡</div>
+            <div class="proj-info-content">
+              <div class="proj-info-label pil-why">WHY</div>
+              <div class="proj-info-text">PV5 담당 PM으로서, <strong>다양한 활용성</strong>을 게임·e스포츠 팬덤에게 친숙하고 재미있게 전달할 방법을 고민. PV5 게이밍카 아이디어를 직접 제안.</div>
+            </div>
+          </div>
+          <div class="proj-info-line"></div>
+          <div class="proj-info-row">
+            <div class="proj-info-icon pii-goal">🎯</div>
+            <div class="proj-info-content">
+              <div class="proj-info-label pil-goal">GOAL</div>
+              <div class="proj-info-text">영타겟에게 <strong>PV5를 '갖고 싶은 차'로 인식</strong>시키는 체험. 팬덤 150명 대상 만족도 95점 이상 달성.</div>
+            </div>
+          </div>
+          <div class="proj-info-line"></div>
+          <div class="proj-info-row">
+            <div class="proj-info-icon pii-role">🙋</div>
+            <div class="proj-info-content">
+              <div class="proj-info-label pil-role">MY ROLE</div>
+              <div class="proj-info-text">PV5 게이밍카 특별 제작 기획 · 1대1 이벤트 매치 체험 설계 · 뷰잉파티 현장 체험 요소 전체 기획 · 행사 PM 총괄.</div>
+            </div>
+          </div>
+          <div class="proj-info-line"></div>
+          <div class="proj-info-row result-row">
+            <div class="proj-info-icon pii-result">🏆</div>
+            <div class="proj-info-content">
+              <div class="proj-info-label pil-result">RESULT</div>
+              <div class="proj-info-text"><strong>행사 만족도 97점</strong> · 오가닉 후기 5건↑. "이런 차 갖고 싶다"는 반응으로 PV5 브랜드 호감도 제고 성공.</div>
+            </div>
+          </div>
+        </div></div>
+    </div>
+
+    <div class="project-card featured reveal">
+      <div class="project-card-banner project-card-banner--photo" style="background-image:url('./images/carnival.jpg');background-size:cover;background-position:center 55%;">
+        <a href="https://www.yna.co.kr/view/AKR20241221043400003" target="_blank" rel="noopener" class="banner-link" style="right:12px;" title="언론 보도 보기">↗</a>
+       <div class="contrib-gauge"><svg width="38" height="38" viewBox="0 0 38 38" style="display:block;flex-shrink:0;"><circle cx="19" cy="19" r="15" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="3"/><circle cx="19" cy="19" r="15" fill="none" stroke="#00D68F" stroke-width="3" stroke-dasharray="94.2478 0" stroke-dashoffset="-23.5619" stroke-linecap="round"/><text x="19" y="22" text-anchor="middle" font-size="9" font-weight="600" fill="white" font-family="Space Grotesk,sans-serif">100%</text></svg></div>
+        <span class="project-card-tag">마케팅 PM · 대규모 런칭</span>
+      </div>
+      <div class="project-card-body">
+        <div class="project-card-title">카니발 · 스포티지 · PV5 런칭 캠페인 PM</div>
+        <p class="project-card-desc">3개 차종의 대규모 런칭 캠페인을 마케팅 PM으로 총괄. 판매·상품·판촉·교육·CX 등 다부문 이해관계자를 조율하며 캠페인 타임라인을 관리하고 책임 있게 추진했습니다.</p>
+      
+        <div class="proj-info">
+          <div class="proj-info-row">
+            <div class="proj-info-icon pii-why">💡</div>
+            <div class="proj-info-content">
+              <div class="proj-info-label pil-why">WHY</div>
+              <div class="proj-info-text">대형 런칭은 판매·상품·판촉·교육·CX 등 <strong>전 부문이 같은 방향을 향할 때</strong> 계약으로 이어지기에 각 차종의 역할에 맞는 전략을 수립하는 PM 역할에 집중.</div>
+            </div>
+          </div>
+          <div class="proj-info-line"></div>
+          <div class="proj-info-row">
+            <div class="proj-info-icon pii-goal">🎯</div>
+            <div class="proj-info-content">
+              <div class="proj-info-label pil-goal">GOAL</div>
+              <div class="proj-info-text">차종별 <strong>데이터 기반 포지셔닝 수립</strong> → 전 부문 통일된 실행계획 추진 → 사업계획 대비 계약 목표 달성.</div>
+            </div>
+          </div>
+          <div class="proj-info-line"></div>
+          <div class="proj-info-row">
+            <div class="proj-info-icon pii-role">🙋</div>
+            <div class="proj-info-content">
+              <div class="proj-info-label pil-role">MY ROLE</div>
+              <div class="proj-info-text">타겟·포지셔닝 전략 수립 (카니발 "Grand Cruise on the Road" 등) · 종합출시계획 작성 · 5개 이상 부문 런칭 협의회 40회↑ 직접 소집·주관 · PV5 × 권재혁 WAV 캠페인 기획.</div>
+            </div>
+          </div>
+          <div class="proj-info-line"></div>
+          <div class="proj-info-row result-row">
+            <div class="proj-info-icon pii-result">🏆</div>
+            <div class="proj-info-content">
+              <div class="proj-info-label pil-result">RESULT</div>
+              <div class="proj-info-text"><strong>세 차종 모두 사업계획 대비 200%↑ 계약 달성</strong> · 크로스펑셔널 PM 역량 확보 · 런칭 협의회 40회 이상 주관.</div>
+            </div>
+          </div>
+        </div></div>
+    </div>
+
+  </div>
+
+  <p style="text-align:center; font-size:13px; color:var(--muted); margin-top:32px; line-height:1.9;">
+    그리고&nbsp;
+    <a href="https://youtu.be/w-Rct8ECUTQ?si=Oi40uPCEmaualy5h" target="_blank" rel="noopener"
+       style="color:var(--blue); text-decoration:none; border-bottom:1px solid rgba(0,95,255,0.3); padding-bottom:1px;">&lt;킹겐극장&gt;</a>,&nbsp;
+    <a href="https://youtu.be/GWpuQmaF0CU?si=0-8NNBgVfEttMyXT" target="_blank" rel="noopener"
+       style="color:var(--blue); text-decoration:none; border-bottom:1px solid rgba(0,95,255,0.3); padding-bottom:1px;">&lt;협곡 출근의 건&gt;</a>,&nbsp;
+    <a href="https://youtu.be/uUTmXMtvb6g?si=CZGqKv4HKBNO2W1A" target="_blank" rel="noopener"
+       style="color:var(--blue); text-decoration:none; border-bottom:1px solid rgba(0,95,255,0.3); padding-bottom:1px;">&lt;권재혁 × PV5 캠페인&gt;</a>&nbsp;등
+    게임·e스포츠 팬덤을 위한 콘텐츠도 타겟 니즈에 맞게 다양하게 기획했습니다.
+  </p>
+</section>
+
+<hr class="divider">
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-eyebrow" style="color:var(--green)">04 · Skills</div>
+  <h2 class="section-title">역량 · 툴셋</h2>
+  <p class="section-sub">마케팅 PM으로서 전략 기획부터 실행까지 폭넓고 책임감 있게 다룹니다.</p>
+
+  <div class="skills-layout">
+    <div class="skill-group reveal">
+      <div class="skill-group-title" style="color:var(--blue)">
+        <span class="dot" style="background:var(--blue)"></span>중화권 역량
+      </div>
+      <div class="skill-item">
+        <span class="skill-name">중국어 (Speaking)</span>
+        <div class="skill-bar-wrap"><div class="skill-bar" style="width:67%;background:var(--blue)"></div></div>
+        <span class="skill-level">중등생</span>
+      </div>
+      <div class="skill-item">
+        <span class="skill-name">중국어 (Writing)</span>
+        <div class="skill-bar-wrap"><div class="skill-bar" style="width:55%;background:var(--blue)"></div></div>
+        <span class="skill-level">HSK 6</span>
+      </div>
+      <div class="skill-item">
+        <span class="skill-name">중화권 문화 이해</span>
+        <div class="skill-bar-wrap"><div class="skill-bar" style="width:95%;background:var(--cyan)"></div></div>
+        <span class="skill-level">심화</span>
+      </div>
+      <div class="skill-item">
+        <span class="skill-name">샤오홍슈 / WeChat</span>
+        <div class="skill-bar-wrap"><div class="skill-bar" style="width:60%;background:var(--cyan)"></div></div>
+        <span class="skill-level">활용</span>
+      </div>
+    </div>
+
+    <div class="skill-group reveal reveal-delay-1">
+      <div class="skill-group-title" style="color:var(--purple)">
+        <span class="dot" style="background:var(--purple)"></span>팬덤 마케팅
+      </div>
+      <div class="skill-item">
+        <span class="skill-name">오프라인 행사 기획</span>
+        <div class="skill-bar-wrap"><div class="skill-bar" style="width:88%;background:var(--purple)"></div></div>
+        <span class="skill-level">상</span>
+      </div>
+      <div class="skill-item">
+        <span class="skill-name">굿즈 개발·제작</span>
+        <div class="skill-bar-wrap"><div class="skill-bar" style="width:70%;background:var(--purple)"></div></div>
+        <span class="skill-level">중상</span>
+      </div>
+      <div class="skill-item">
+        <span class="skill-name">온라인 콘텐츠 기획</span>
+        <div class="skill-bar-wrap"><div class="skill-bar" style="width:94%;background:var(--coral)"></div></div>
+        <span class="skill-level">상</span>
+      </div>
+      <div class="skill-item">
+        <span class="skill-name">팬덤 인사이트 분석</span>
+        <div class="skill-bar-wrap"><div class="skill-bar" style="width:75%;background:var(--coral)"></div></div>
+        <span class="skill-level">중상</span>
+      </div>
+    </div>
+
+    <div class="skill-group reveal reveal-delay-2">
+      <div class="skill-group-title" style="color:var(--green)">
+        <span class="dot" style="background:var(--green)"></span>PM · 협업
+      </div>
+      <div class="skill-item">
+        <span class="skill-name">마케팅 PM</span>
+        <div class="skill-bar-wrap"><div class="skill-bar" style="width:95%;background:var(--green)"></div></div>
+        <span class="skill-level">상</span>
+      </div>
+      <div class="skill-item">
+        <span class="skill-name">크로스펑셔널 협업</span>
+        <div class="skill-bar-wrap"><div class="skill-bar" style="width:95%;background:var(--green)"></div></div>
+        <span class="skill-level">상</span>
+      </div>
+      <div class="skill-item">
+        <span class="skill-name">에이전시 관리</span>
+        <div class="skill-bar-wrap"><div class="skill-bar" style="width:85%;background:var(--amber)"></div></div>
+        <span class="skill-level">상</span>
+      </div>
+      <div class="skill-item">
+        <span class="skill-name">캠페인 기획·일정 관리</span>
+        <div class="skill-bar-wrap"><div class="skill-bar" style="width:95%;background:var(--amber)"></div></div>
+        <span class="skill-level">상</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-eyebrow" style="color:var(--amber);justify-content:center;">05 · Contact</div>
+  <h2 class="section-title" style="text-align:center;">중화권 팬덤, <span class="contact-title-accent">함께 만들어 가겠습니다.</span></h2>
+  <p style="text-align:center;color:rgba(255,255,255,0.5);font-size:15px;margin-top:12px;">네오위즈 중화권사업팀 팬덤 마케팅 PM 포지션에 지원합니다.</p>
+  <div class="contact-cards">
+    <div class="contact-card">
+      <div class="contact-card-icon">✉️</div>
+      <div class="contact-card-label">Email</div>
+      <div class="contact-card-val">jinminsick@naver.com</div>
+    </div>
+    <div class="contact-card">
+      <div class="contact-card-icon">📱</div>
+      <div class="contact-card-label">Phone</div>
+      <div class="contact-card-val">010-8340-1248</div>
+    </div>
+    <div class="contact-card">
+      <div class="contact-card-icon">💼</div>
+      <div class="contact-card-label">LinkedIn</div>
+      <div class="contact-card-val">www.linkedin.com/in/minsick-jin-510036205</div>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 진민식 · Fandom Marketing PM Portfolio</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html<div class="contrib-gauge"><svg width="38" height="38" viewBox="0 0 38 38" style="display:block;flex-shrink:0;"><circle cx="19" cy="19" r="15" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="3"/><circle cx="19" cy="19" r="15" fill="none" stroke="#00D68F" stroke-width="3" stroke-dasharray="94.2478 0" stroke-dashoffset="-23.5619" stroke-linecap="round"/><text x="19" y="22" text-anchor="middle" font-size="9" font-weight="600" fill="white" font-family="Space Grotesk,sans-serif">100%</text></svg></div>
+        

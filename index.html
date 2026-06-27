@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>진민식 — 팬덤 마케팅 PM</title>
+<script>
+  // 모바일 감지: 화면 너비 768px 이하 또는 모바일 UA
+  var isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent)
+                 || window.innerWidth <= 768;
+  window.location.replace(isMobile ? './mobile.html' : './pc.html');
+</script>
+<noscript>
+  <meta http-equiv="refresh" content="0; url=./pc.html">
+</noscript>
+</head>
+<body>
+  <p style="font-family:sans-serif;text-align:center;margin-top:40px;">
+    페이지 이동 중...<br>
+    <a href="./pc.html">PC 버전</a> | <a href="./mobile.html">모바일 버전</a>
+  </p>
+</body>
+</html>
