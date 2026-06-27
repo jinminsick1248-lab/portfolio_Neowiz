@@ -328,7 +328,7 @@
   .contact-card-val { font-size: 13px; color: #fff; font-weight: 500; }
 
   /* ── REVEAL ── */
-  .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.5s ease, transform 0.5s ease; }
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.5s ease, transform 0.5s ease; -webkit-transform: translateY(18px); -webkit-transition: opacity 0.5s ease, -webkit-transform 0.5s ease; }
   .reveal.visible { opacity: 1; transform: translateY(0); }
   .reveal-delay-1 { transition-delay: 0.08s; }
   .reveal-delay-2 { transition-delay: 0.16s; }
@@ -804,10 +804,23 @@
 <footer>© 2026 진민식 · Fandom Marketing PM Portfolio</footer>
 
 <script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.08 });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  document.addEventListener('DOMContentLoaded', function() {
+    var elements = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+          if (e.isIntersecting) {
+            e.target.classList.add('visible');
+            observer.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -20px 0px' });
+      elements.forEach(function(el) { observer.observe(el); });
+    } else {
+      // IntersectionObserver 미지원 시 전부 보이게
+      elements.forEach(function(el) { el.classList.add('visible'); });
+    }
+  });
 </script>
 </body>
 </html>
