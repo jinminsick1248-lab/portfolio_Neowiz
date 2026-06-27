@@ -5,43 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>진민식 — 팬덤 마케팅 PM</title>
 <script>
-  (function() {
-    var ua = navigator.userAgent || '';
-    var sw = window.screen.width;
-    var sh = window.screen.height;
-    var shorter = Math.min(sw, sh);
-    var hasTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
-    var mobileUA = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile|mobile|CriOS|Mobi|KAKAOTALK/i.test(ua);
-    var isMobile = mobileUA || (hasTouch && shorter <= 768);
-
-    var dest = isMobile ? './mobile.html' : './pc.html';
-
-    // 방법 1: replace (일반 브라우저)
-    try { window.location.replace(dest); } catch(e) {}
-    // 방법 2: href (인앱 브라우저 대비)
-    try { window.location.href = dest; } catch(e) {}
+  (function(){
+    var ua = navigator.userAgent||'';
+    var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile|mobile|CriOS|Mobi/i.test(ua)
+      || (('ontouchstart' in window) && Math.min(screen.width, screen.height) <= 768);
+    window.location.replace(isMobile ? './mobile.html' : './pc.html');
   })();
 </script>
 </head>
-<body>
-<!-- 방법 3: 서버사이드 불가 환경 대비 — JS 실패 시 링크로 안내 -->
-<style>
-  body { font-family: sans-serif; text-align: center; padding: 60px 20px; color: #555; }
-  .btn { display: inline-block; margin: 10px; padding: 14px 28px; border-radius: 10px; text-decoration: none; font-size: 15px; font-weight: 600; }
-  .pc  { background: #005FFF; color: #fff; }
-  .mob { background: #00D68F; color: #fff; }
-</style>
-<p style="font-size:14px;margin-bottom:24px;">포트폴리오로 이동 중입니다...</p>
-<a href="./pc.html" class="btn pc">💻 PC 버전</a>
-<a href="./mobile.html" class="btn mob">📱 모바일 버전</a>
-<script>
-  // 방법 4: 딜레이 후 재시도 (인앱 브라우저 타이밍 이슈 대비)
-  setTimeout(function() {
-    var ua = navigator.userAgent || '';
-    var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile|mobile|CriOS|Mobi|KAKAOTALK/i.test(ua)
-                  || (('ontouchstart' in window) && Math.min(screen.width, screen.height) <= 768);
-    window.location.href = isMobile ? './mobile.html' : './pc.html';
-  }, 300);
-</script>
+<body style="font-family:sans-serif;text-align:center;padding:60px 20px;color:#555;">
+  <p>페이지 이동 중...</p>
+  <p style="margin-top:20px;">
+    <a href="./pc.html">💻 PC 버전</a> &nbsp;|&nbsp;
+    <a href="./mobile.html">📱 모바일 버전</a>
+  </p>
 </body>
 </html>
