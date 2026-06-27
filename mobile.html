@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="ko" style="background:#0D0F14;">
 <head>
+<script>
+(function(){
+  var ua = navigator.userAgent||'';
+  var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile|mobile|CriOS|Mobi/i.test(ua)
+                 ||(('ontouchstart' in window)&&Math.min(screen.width,screen.height)<=768);
+  if(!isMobile) return;
+  window.location.replace('./mobile.html');
+})();
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>진민식 — 팬덤 마케팅 PM</title>
