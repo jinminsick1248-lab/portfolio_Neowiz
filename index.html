@@ -5,23 +5,36 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>진민식 — 팬덤 마케팅 PM</title>
 <script>
-  var ua = navigator.userAgent;
-  var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile|mobile|CriOS/i.test(ua);
-  // UA로 안 잡히면 터치 지원 + 화면 너비로 2차 판별
-  if (!isMobile) {
-    isMobile = (('ontouchstart' in window) || (navigator.maxTouchPoints > 0))
-               && window.screen.width <= 1024;
+  var ua = navigator.userAgent || '';
+  var sw = window.screen.width || 9999;
+  var sh = window.screen.height || 9999;
+  var shorter = Math.min(sw, sh);  // 짧은 쪽 = 실제 폰 너비
+  var hasTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+
+  // 모바일 UA 패턴 (최대한 넓게)
+  var mobileUA = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile|mobile|CriOS|Mobi/i.test(ua);
+
+  // 폰: UA 또는 (터치+짧은변 768 이하)
+  var isMobile = mobileUA || (hasTouch && shorter <= 768);
+
+  if (isMobile) {
+    window.location.replace('./mobile.html');
+  } else {
+    window.location.replace('./pc.html');
   }
-  window.location.replace(isMobile ? './mobile.html' : './pc.html');
 </script>
 <noscript>
   <meta http-equiv="refresh" content="0; url=./pc.html">
 </noscript>
 </head>
-<body>
-  <p style="font-family:sans-serif;text-align:center;margin-top:40px;color:#555;">
-    페이지 이동 중...<br><br>
-    <a href="./pc.html">💻 PC 버전</a> &nbsp;|&nbsp; <a href="./mobile.html">📱 모바일 버전</a>
+<body style="font-family:sans-serif;text-align:center;padding:60px 20px;color:#555;">
+  <p>페이지 이동 중...</p>
+  <p style="margin-top:20px;font-size:13px;">
+    <a href="./pc.html">💻 PC 버전</a> &nbsp;|&nbsp;
+    <a href="./mobile.html">📱 모바일 버전</a>
   </p>
+  <!-- UA 디버그: 아래 주석 해제하면 UA 확인 가능
+  <script>document.write('<p style="font-size:11px;color:#999;">UA: '+navigator.userAgent+'<br>screen: '+screen.width+'x'+screen.height+'<br>touch: '+('ontouchstart' in window)+'</p>')</script>
+  -->
 </body>
 </html>
